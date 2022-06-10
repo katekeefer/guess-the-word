@@ -36,7 +36,7 @@ const placeholder = function (word) {
 
 guessLetterButton.addEventListener("click", function (e) {
     e.preventDefault();
-    message.innerText = ""
+    message.innerText = "";
     const guess = letterInput.value;
     const goodGuess = validateInput(guess);
     if (goodGuess) {
@@ -65,6 +65,7 @@ const makeGuess = function (guess) {
     } else {
         guessedLetters.push(guess);
         console.log(guessedLetters);
+        updateGuessesRemaining(guess);
         showGuessedLetters();
         updateWordInProgress(guessedLetters);
     }
@@ -104,7 +105,8 @@ const updateGuessesRemaining = function (guess) {
     }
 
     if (remainingGuesses === 0) {
-        message.innerText = `Game over! The word was <span class="highlight">${word}</span>.`;
+        message.innerHTML = `Game over! The word was <span class="highlight">${word}</span>.`;
+        startOver();
     } else if (remainingGuesses === 1) {
         remaingingGuessesSpan.innerText = `${remainingGuesses} guess`;
     } else {
@@ -117,6 +119,31 @@ const checkIfWin = function () {
     if (word.toUpperCase()=== wordInProgress.innerText) {
         message.classList.add("win");
         message.innerHTML = `<p class="highlight"> You guessed the correct word! Congrats!</p>`;
+        
+        startOver();
     }
 };
+
+const startOver = function () {
+    guessLetterButton.classList.add("hide");
+    remainingGuessesElement.classList.add("hide");
+    guessedLettersElement.classList.add("hide");
+    playAgainButton.classList.remove("hide");
+};
+
+playAgainButton.addEventListener("click", function () {
+    message.classList.remove("win");
+    guessedLetters = [];
+    remainingGuesses = 8;
+    remaingingGuessesSpan.innerText = `${remainingGuesses} guesses`;
+    guessedLettersElement.innerHTML = "";
+    message.innerText = "";
+
+    getWord();
+
+    guessLetterButton.classList.remove("hide");
+    playAgainButton.classList.add("hide");
+    remainingGuessesElement.classList.remove("hide");
+    guessedLettersElement.classList.remove("hide");
+});
 
