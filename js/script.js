@@ -133,7 +133,7 @@ const startOver = function () {
 
 playAgainButton.addEventListener("click", function () {
     message.classList.remove("win");
-    guessedLetters = [];
+    let guessedLetters = [];
     remainingGuesses = 8;
     remaingingGuessesSpan.innerText = `${remainingGuesses} guesses`;
     guessedLettersElement.innerHTML = "";
