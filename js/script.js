@@ -8,7 +8,7 @@ const message = document.querySelector(".message");
 const playAgainButton = document.querySelector(".play-again");
 
 let word = "magnolia";
-const guessedLetters = [];
+let guessedLetters = [];
 let remainingGuesses = 8;
 
 const getWord = async function () {
@@ -133,7 +133,7 @@ const startOver = function () {
 
 playAgainButton.addEventListener("click", function () {
     message.classList.remove("win");
-    let guessedLetters = [];
+    const guessedLetters = [];
     remainingGuesses = 8;
     remaingingGuessesSpan.innerText = `${remainingGuesses} guesses`;
     guessedLettersElement.innerHTML = "";
