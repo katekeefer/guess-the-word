@@ -3,7 +3,7 @@ const guessLetterButton = document.querySelector(".guess");
 const letterInput = document.querySelector(".letter");
 const wordInProgress = document.querySelector(".word-in-progress");
 const remainingGuessesElement = document.querySelector(".remaining");
-const remaingingGuessesSpan = document.querySelector(".remaining span");
+const remainingGuessesSpan = document.querySelector(".remaining span");
 const message = document.querySelector(".message");
 const playAgainButton = document.querySelector(".play-again");
 
@@ -108,9 +108,9 @@ const updateGuessesRemaining = function (guess) {
         message.innerHTML = `Game over! The word was <span class="highlight">${word}</span>.`;
         startOver();
     } else if (remainingGuesses === 1) {
-        remaingingGuessesSpan.innerText = `${remainingGuesses} guess`;
+        remainingGuessesSpan.innerText = `${remainingGuesses} guess`;
     } else {
-        remaingingGuessesSpan.innerText = `${remainingGuesses} guesses`;
+        remainingGuessesSpan.innerText = `${remainingGuesses} guesses`;
     }
 };
 
@@ -135,10 +135,10 @@ playAgainButton.addEventListener("click", function () {
     message.classList.remove("win");
     guessedLetters = [];
     remainingGuesses = 8;
-    remaingingGuessesSpan.innerText = `${remainingGuesses} guesses`;
+    remainingGuessesSpan.innerText = `${remainingGuesses} guesses`;
     guessedLettersElement.innerHTML = "";
     message.innerText = "";
-
+  
     getWord();
 
     guessLetterButton.classList.remove("hide");
